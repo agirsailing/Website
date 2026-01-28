@@ -98,8 +98,9 @@ padding-bottom: 10rem;
 margin-bottom: 0;
 }
 .section__title{
-font-weight: 600;
-font-size: 4rem;
+margin-top : 2rem;
+font-weight: 500;
+font-size: rem;
 position: relative;
 }
 
@@ -293,7 +294,6 @@ position: relative;
 }
 .header__image {
 position: absolute;
-top: 4rem;
 right: 4rem;
 height: auto;
 width: 50%;
@@ -320,7 +320,7 @@ mask-repeat: no-repeat;
 .about-me{
 display: flex;
 flex-direction: column;
-margin-top: 6rem;
+margin-top: 1rem;
 }
 .about__box{
 margin-bottom: 1rem;
@@ -338,6 +338,39 @@ color: var(--text-color);
 margin-top: 2rem;
 }
 .about__msg{
+font-weight: 400;
+font-size: 1.4rem;
+line-height: 1.6;
+text-align: justify;
+height: auto;
+}
+
+/*
+* ==================
+* The competition
+* ==================
+*/
+.competition{
+display: flex;
+flex-direction: column;
+margin-top: 1rem;
+}
+.competition__box{
+margin-bottom: 1rem;
+background-color: var(--container-color);
+padding: 3rem;
+border-radius: 10px;
+position: relative;
+overflow: hidden;
+max-width: var(--content-box-width);
+}
+.competition__title{ /*to add other subsections*/
+font-weight: 800;
+font-size: 2rem;
+color: var(--text-color);
+margin-top: 2rem;
+}
+.competition__msg{
 font-weight: 400;
 font-size: 1.4rem;
 line-height: 1.6;
@@ -477,14 +510,20 @@ color: var(--text-color);
 * Team Section
 * ==================
 */
+.team__section_top {
+display: flex;
+flex-direction: column;
+margin-top: 3rem;
+width: 100%;
+}
 .team__section {
 display: flex;
 flex-direction: column;
-margin-top: 6rem;
+margin-top: 20rem;
 width: 100%;
 }
 .team-box {
-background-color: var(--container-color);
+backdrop-filter: blur(3px);
 padding: 4rem;
 border-radius: 12px;
 position: relative;
@@ -607,7 +646,7 @@ transition: transform 0.3s ease;
 .new__item:hover img {
 transform: scale(1.02);
 }
-.new__title {
+.news__title {
 position: absolute;
 bottom: 0;
 left: 0;
@@ -624,7 +663,7 @@ opacity: 0;
 transition: opacity 0.3s ease;
 z-index: 3; 
 }
-.new__item:hover .new__title {
+.new__item:hover .news__title {
 opacity: 1;
 }
 
@@ -824,10 +863,6 @@ transform: scale(1.1);
 
 
 /*----------------------------------Screens----------------------------------*/
-/*----------------------------------
-  Screens / Responsive
-----------------------------------*/
-
 /* ========================
    Base (Mobile)
    ======================== */
@@ -838,7 +873,7 @@ transform: scale(1.1);
   width: 100%;
   top: 0;
   right: 0;
-  margin-top: 2rem;
+  margin-top: 7rem;
   z-index: -1;
 }
 
@@ -927,7 +962,7 @@ transform: scale(1.1);
     grid-template-columns: repeat(2, 1fr);
   }
 
-  .new__title {
+  .news__title {
     font-size: 1.2rem;
     padding: 0.4rem;
   }
@@ -942,13 +977,12 @@ transform: scale(1.1);
   }
 
   .section__title {
-    font-size: 8rem;
+    font-size: 6rem;
   }
 
   /* Header image (desktop) */
   .header__image {
     width: 50%;
-    top: 4rem;
     right: 4rem;
     z-index: 0;
   }
