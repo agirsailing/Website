@@ -337,15 +337,17 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 //Extra information
-function extraInfo(school) {
-  const space = document.getElementById("space-" + school);
-  const moreText = document.getElementById("more-info-" + school);
-  const icon = document.getElementById("icon-" + school).querySelector("path");
+function extraInfo(box) {
+  const space = document.getElementById("space-" + box);
+  const moreText = document.getElementById("more-info-" + box);
+  const icon = document.getElementById("icon-" + box).querySelector("path");
 
   const upPath = "M480-528 296-344l-56-56 240-240 240 240-56 56-184-184Z";
   const downPath = "M480-344 240-584l56-56 184 184 184-184 56 56-240 240Z";
 
-  const isHidden = moreText.style.display === "none" || moreText.style.display === "";
+  const isHidden = moreText.style.display === "none";
+
+  moreText.style.display = isHidden ? "inline-block" : "none";
 
   space.style.display = isHidden ? "inline" : "none";
   moreText.style.display = isHidden ? "inline" : "none";
