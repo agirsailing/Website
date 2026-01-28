@@ -227,8 +227,8 @@ NAV_LINKS.forEach(link => {
   link.addEventListener('click', ()=>{
     resetActiveState();
     link.blur();
-  })
-})
+  });
+});
 
 // Shows & hide navbar on smaller screen
 HAMBURGER_BTN.addEventListener('click', ()=>{
@@ -353,6 +353,15 @@ function extraInfo(box) {
   moreText.style.display = isHidden ? "inline" : "none";
   icon.setAttribute("d", isHidden ? upPath : downPath);
 }
+
+document.addEventListener("DOMContentLoaded", () => {
+  document.querySelectorAll('.more-info__btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const id = btn.id.replace('btn-', '');
+      extraInfo(id);
+    });
+  });
+});
 
 // Setup auto-hide for all "more-info" containers
 document.addEventListener("DOMContentLoaded", () => {
