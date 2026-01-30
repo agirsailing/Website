@@ -295,9 +295,9 @@ position: relative;
 .header__image {
 position: absolute;
 right: 4rem;
-height: auto;
+top: 50%;
 width: 50%;
-background-color: var(--background-color);
+transform: translateY(-50%);
 z-index: 0; 
 }
 .header__image img {
@@ -305,11 +305,7 @@ width: 100%;
 height: auto;
 object-fit: cover; 
 display: block;
-
-/* Gradient mask */
-mask-image: linear-gradient(to bottom, var(--background-color) 70%, transparent 100%);
-mask-size: 100% 100%;
-mask-repeat: no-repeat;
+mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
 }
 
 /*
@@ -945,6 +941,49 @@ font-size: 0.8rem;
 grid-template-columns: repeat(2, 1fr); 
 }
 }
+/* Mobile-specific Header Background */
+@media only screen and (max-width: 768px) {
+  .hero-header {
+      /* Ensure the parent has a defined height */
+      height: 100dvh; 
+      position: relative;
+  }
+
+  .header__image {
+      /* Reset your desktop positions */
+      right: 0;
+      top: 0;
+      transform: none;
+      
+      /* Make it fill the entire screen */
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      
+      /* Push it behind the text */
+      z-index: -1; 
+      opacity: 0.4; /* Optional: adjust so text is readable */
+  }
+
+  .header__image img {
+      width: 100%;
+      height: 100%;
+      /* This is the magic: it centers and covers without stretching */
+      object-fit: cover; 
+      object-position: center;
+      mask-image: none; /* Removing the gradient mask for a cleaner full-screen look */
+  }
+
+  /* Ensure text container stays on top and is centered */
+  .header__container {
+      position: relative;
+      z-index: 2;
+      background: transparent;
+      display: flex;
+      justify-content: center;
+      text-align: center;
+  }
+}
 
 /*
 * ========================
@@ -996,10 +1035,9 @@ right: auto; /* Remove the 'right' setting from desktop */
 /* Make all arrows point Left */
 .left .timeline__content::before,
 .right .timeline__content::before {
-  left: -10 px;
-  right: auto; /* Reset the 'right' property */
-  border-width: 10px 10px 10px 0;
-  border-color: transparent var(--container-color) transparent transparent;
+left: -10px;
+border-width: 10px 10px 10px 0;
+border-color: transparent var(--container-color) transparent transparent;
 }
 }
 
