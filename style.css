@@ -97,11 +97,14 @@ padding-bottom: 10rem;
 .section:last-of-type{
 margin-bottom: 0;
 }
-.section__title{
-margin-top : 2rem;
+
+.section__title {
+margin-top: 2rem;
 font-weight: 500;
-font-size: rem;
+font-size: clamp(3rem, 8vw, 6rem); 
 position: relative;
+text-align: center; 
+line-height: 1.1;   
 }
 
 /*
@@ -884,11 +887,19 @@ max-width: 760px;
 .header__image{
 position: absolute;
 }
-.header__title{
-flex-direction: row;
-}
 .header__title-1{
 margin-right: 1.5rem;
+}
+.header__sup-text{
+margin-right: 1.5rem;
+}
+.header__title{
+text-transform: uppercase;
+font-weight: 800;
+font-size: clamp(3rem, 6vw, 6rem);
+line-height: 1;
+display: flex;
+flex-direction: column;
 }
 /* Navbar */
 .nav__list{
@@ -940,49 +951,49 @@ font-size: 0.8rem;
 .projects__grid {
 grid-template-columns: repeat(2, 1fr); 
 }
+
+.hero-header {
+height: 100dvh; 
+position: relative;
 }
-/* Mobile-specific Header Background */
-@media only screen and (max-width: 768px) {
-  .hero-header {
-      /* Ensure the parent has a defined height */
-      height: 100dvh; 
-      position: relative;
-  }
 
-  .header__image {
-      /* Reset your desktop positions */
-      right: 0;
-      top: 0;
-      transform: none;
-      
-      /* Make it fill the entire screen */
-      width: 100%;
-      height: 100%;
-      position: absolute;
-      
-      /* Push it behind the text */
-      z-index: -1; 
-      opacity: 0.4; /* Optional: adjust so text is readable */
-  }
+.header__image {
+right: 0;
+top: 10%;
+transform: none;
+width: 100%;
+height: 100%;
+position: absolute;
+z-index: -1; 
+opacity: 0.8;
+}
 
-  .header__image img {
-      width: 100%;
-      height: 100%;
-      /* This is the magic: it centers and covers without stretching */
-      object-fit: cover; 
-      object-position: center;
-      mask-image: none; /* Removing the gradient mask for a cleaner full-screen look */
-  }
+.header__image img {
+width: 100%;
+height: 100%;
+object-fit: cover; 
+object-position: center;
+mask-image: none;
+}
 
-  /* Ensure text container stays on top and is centered */
-  .header__container {
-      position: relative;
-      z-index: 2;
-      background: transparent;
-      display: flex;
-      justify-content: center;
-      text-align: center;
-  }
+.header__container {
+height: auto; 
+min-height: 60dvh;     
+display: flex;
+flex-direction: column;
+justify-content: flex-start; 
+align-items: center;        
+text-align: center;
+padding-top: 12rem;        
+padding-bottom: 2rem;
+position: relative;
+z-index: 2;
+}
+
+.hero-header {
+height: auto; 
+min-height: auto;
+}
 }
 
 /*
@@ -995,7 +1006,7 @@ grid-template-columns: repeat(2, 1fr);
 max-width: 960px;
 }
 .section__title{
-font-size: 8rem;
+font-size: 6rem;
 }
 .contact__form{
 width: 40%;
