@@ -936,7 +936,7 @@ display: none;
 transform: translateY(-50%);
 }    
 /* Project */
-.project__title {
+.news__title {
 padding: 0.4rem;
 font-weight: 300;
 font-size: 1rem;
@@ -948,7 +948,7 @@ padding: 2px 0;
 font-size: 0.8rem;
 }
 /*Flip card grid*/
-.projects__grid {
+.news__grid {
 grid-template-columns: repeat(2, 1fr); 
 }
 
