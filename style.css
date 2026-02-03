@@ -99,14 +99,14 @@ padding-bottom: 10rem;
 .section:last-of-type{
 margin-bottom: 0;
 }
-
 .section__title {
 margin-top: 2rem;
 font-weight: 500;
 font-size: clamp(3rem, 8vw, 6rem); 
 position: relative;
 text-align: center; 
-line-height: 1.1;   
+line-height: 1.1;  
+margin-bottom: 2rem;  
 }
 
 /*
@@ -324,19 +324,12 @@ flex-direction: column;
 margin-top: 1rem;
 }
 .about__box{
-margin-bottom: 1rem;
 background-color: var(--container-color);
 padding: 3rem;
 border-radius: 10px;
 position: relative;
 overflow: hidden;
 max-width: var(--content-box-width);
-}
-.about__title{ 
-font-weight: 800;
-font-size: 2rem;
-color: var(--text-color);
-margin-top: 2rem;
 }
 .about__msg{
 font-weight: 400;
@@ -354,18 +347,22 @@ height: auto;
 .competition{
 display: flex;
 flex-direction: column;
+gap: 1rem;
 margin-top: 1rem;
 }
-.competition__box{
+.competition__box {
+display: grid;
+grid-template-columns: 1fr 1fr;
+gap: 2rem;
 margin-bottom: 1rem;
-background-color: var(--container-color);
-padding: 3rem;
-border-radius: 10px;
-position: relative;
-overflow: hidden;
 max-width: var(--content-box-width);
 }
-.competition__title{ /*to add other subsections*/
+.competition__content {
+display: flex;
+flex-direction: column;
+justify-content: center;
+}
+.competition__title{
 font-weight: 800;
 font-size: 2rem;
 color: var(--text-color);
@@ -378,7 +375,35 @@ line-height: 1.6;
 text-align: justify;
 height: auto;
 }
-
+.card {
+background-color: var(--container-color);
+padding: 3rem;
+border-radius: 10px;
+}
+.competition__box.reverse {
+direction: rtl;
+}
+.competition__box.reverse > * {
+direction: ltr;
+}
+.competition__image {
+display: flex;
+justify-content: center;
+align-items: center;
+}
+.competition__image img {
+max-width: 100%;
+height: auto;
+object-fit: contain;
+}
+.competition_section__title{
+margin-top: 10rem;
+font-weight: 500;
+font-size: clamp(1.5rem, 8vw, 4rem); 
+position: relative;
+text-align: center; 
+line-height: 1.1;  
+}
 /*
 * ==================
 * Timeline
@@ -547,11 +572,14 @@ margin: 0 auto;
 width: 100%;
 }
 .team-box__title {
-font-size: 3rem;
-font-weight: 700;
 margin-bottom: 3rem;
-text-align: center;
+font-weight: 500;
+font-size: clamp(1.5rem, 8vw, 4rem); 
+position: relative;
+text-align: center; 
+line-height: 1.1; 
 }
+
 .team__grid {
 display: grid;
 grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
@@ -634,7 +662,7 @@ text-align: justify;
 /*--Single picture--*/
 .news__grid {
 display: grid;
-grid-template-columns: repeat(3, 1fr); /* Always 3 columns */
+grid-template-columns: repeat(3, 1fr); 
 gap: 2rem;
 max-width: var(--content-box-width);  
 font-size: 1.5rem;     
@@ -644,7 +672,7 @@ width: 100%;
 .new__item {
 position: relative;
 width: 100%;
-aspect-ratio: 1 / 1; /* ensures a square box */
+aspect-ratio: 1 / 1;
 overflow: hidden;
 border-radius: 10px;
 cursor: pointer;
@@ -680,6 +708,46 @@ z-index: 3;
 }
 .new__item:hover .news__title {
 opacity: 1;
+}
+
+.latest_news-title{
+margin-top: 18rem;
+font-weight: 500;
+font-size: clamp(3rem, 8vw, 6rem); 
+position: relative;
+text-align: center; 
+line-height: 1.1;  
+margin-bottom: 2rem;  
+}
+
+.article__title {
+margin-top: 6rem;
+font-weight: 500;
+font-size: clamp(1.5rem, 8vw, 6rem); 
+position: relative;
+text-align: center; 
+line-height: 1.1;   
+}
+.news-article{
+display: flex;
+flex-direction: column;
+margin-top: 6rem;
+}
+.article__box{
+margin-bottom: 1rem;
+background-color: var(--container-color);
+padding: 3rem;
+border-radius: 10px;
+position: relative;
+overflow: hidden;
+max-width: var(--content-box-width);
+}
+.article__msg{
+font-weight: 400;
+font-size: 1.4rem;
+line-height: 1.6;
+text-align: justify;
+height: auto;
 }
 
 /*--Multiple pictures--*/
@@ -995,6 +1063,9 @@ z-index: 2;
 .hero-header {
 height: auto; 
 min-height: auto;
+}
+.competition__box{
+grid-template-columns: 1fr;
 }
 }
 
