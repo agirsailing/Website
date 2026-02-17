@@ -66,7 +66,7 @@ scroll-behavior: smooth;
 :root{
 --background-color: #070c4a;
 --container-color: #494949;
---text-color: #edf2ff;
+--text-color: #edf2ff;  
 --text-color2: #1C1390;
 --text-color3: #999999;
 --gap: 20px;
@@ -182,7 +182,7 @@ overflow-y: scroll;
 text-align: center;
 }
 .nav__list-link {
-color: var(--text-color3);
+color: var(--container-color);
 position: relative;
 font-size: 1.6rem !important;
 font-weight: 600;
@@ -900,7 +900,7 @@ opacity: 1;
 .footer {
 background-color: var(--container-color);
 color: var(--text-color);
-padding: 4rem 2rem;
+padding: 3rem ;
 text-align: center;
 width: 100%;
 }

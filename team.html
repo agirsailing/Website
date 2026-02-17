@@ -9,12 +9,21 @@
     <link rel="icon" href="Images/Agir-4x4.png">
     <link href="https://fonts.googleapis.com/css2?family=Krub:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
-    body {
-    background-image: url('Images/team.jpg');
-    background-repeat: no-repeat;
-    background-attachment: fixed;  
-    background-size: cover;
+
+    body::before {
+        content: "";
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: url('Images/team.jpg');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        z-index: -1;
     }
+
     </style>
 </head>
 
