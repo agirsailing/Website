@@ -160,8 +160,8 @@ display: block;
 */
 .nav {
 display: flex;
-justify-content: center; /* horizontally center */
-align-items: center;     /* vertically center */
+justify-content: center;
+align-items: center;
 padding-top: 4rem;
 padding-bottom: 4rem;
 position: fixed;
@@ -169,8 +169,9 @@ width: 100%;
 top: 0;
 left: 0;
 z-index: 999;
-backdrop-filter: blur(60px);
+background-color: var(--background-color); 
 }
+
 .nav__list {
 display: flex;
 flex-direction: column;
@@ -975,6 +976,10 @@ display: flex;
 flex-direction: column;
 }
 /* Navbar */
+.nav {
+background-color: transparent; 
+backdrop-filter: blur(100px);
+}
 .nav__list{
 height: 0;
 flex-direction: row;
@@ -997,6 +1002,7 @@ color: var(--text-color);
 .nav__hamburger-btn{
 display: none;
 }
+
 }
 
 /*
