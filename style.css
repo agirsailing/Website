@@ -59,7 +59,7 @@ box-sizing: inherit;
 }
 html {
 font-size: 62.5%; /* 10px of 16px */
-box-sizing: border-box;
+box-sizing: border-box; 
 height: 100%;
 scroll-behavior: smooth;
 }
@@ -102,7 +102,7 @@ margin-bottom: 0;
 }
 .section__title {
 margin-top: 2rem;
-font-weight: 500;
+font-weight: 800;
 font-size: clamp(3rem, 8vw, 6rem); 
 position: relative;
 text-align: center; 
