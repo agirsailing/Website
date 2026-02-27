@@ -147,10 +147,7 @@ display: none;
 display: block;
 }
 .header__image .logo {
-    content: url("Images/Agir-4x4_white.png");
-}
-.lightmode .header__image .logo {
-    content: url("Images/Agir-4x4.png");
+content: url("Images/Agir-4x4_white.png");
 }
 
 
@@ -303,12 +300,16 @@ width: 50%;
 transform: translateY(-50%);
 z-index: 0; 
 }
-.header__image img {
+.header__image svg {
 width: 100%;
 height: auto;
 object-fit: cover; 
 display: block;
 mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
+}
+.logo-path {
+fill: var(--text-color-title); 
+transition: fill 0.3s ease; 
 }
 
 /*
