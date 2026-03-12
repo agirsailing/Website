@@ -41,7 +41,7 @@
                 </button>
                 <ul id="navList" class="nav__list">
                     <li class="nav__list-item">
-                        <a class="nav__list-link active" href="index.html#home">Home</a>
+                        <a class="nav__list-link active" href="index.html">Home</a>
                     </li>
                      <li class="nav__list-item">
                         <a class="nav__list-link" href="competition.html">The Competition</a>
@@ -104,13 +104,13 @@
         <h2 class="latest_news-title">Latest news</h2>
         <div class="news__grid">
     
-          <div class="new__item flip-card">
+          <div class="news__item flip-card">
             <div class="flip-card__inner">                
                 <div class="flip-card__front">
                     
                      <div class="carousel">
-                        <img src="Images/Ägir26_white_frame.png" alt="Beginning" class="carousel__image active">
-                        <img src="Images/Ägir26.png" alt="Beginning" class="carousel__image active">
+                        <img src="Images/Ägir26_white_frame.png" alt="Beginning" class="carousel__image contain active">
+                        <img src="Images/Ägir26.png" alt="Beginning" class="carousel__image contain active">
                         <button class="carousel__btn prev">
                             <svg xmlns="http://www.w3.org/2000/svg" height="22px" viewBox="0 -960 960 960" width="22px" fill="#000000"><path d="M560-240 320-480l240-240 56 56-184 184 184 184-56 56Z"/></svg>
                         </button>
@@ -133,17 +133,43 @@
                 </div>
             </div>
           </div>
+
+          <div class="news__item flip-card">
+            <div class="flip-card__inner">                
+                <div class="flip-card__front">
+                    <div class="carousel">
+                        <img src="Images/kth_post_L&U.jpg" alt="KTH post" class="carousel__image active">
+                    </div>
+                        <div class="news__title">SuMoth for project-based learning <br> January 2026</div>
+                </div>
+                <div class="flip-card__back">
+                    <p>
+                       How can advanced engineering theory take the step out of the classroom 
+                       and become real innovation? In the SuMoth Challenge, students get the 
+                       answer the moment their own foiling sailboats rise out of the water. 
+                    </p>
+                    <a href="https://www.kth.se/en/2.844/nyheter/sumoth-challenge-when-theory-meets-speed-sustainability-and-real-innovation-1.1454332" class="link-icon" target="_blank">
+                        <svg xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 24 24" width="24px" height="24px"><path d="M 19.980469 2.9902344 A 1.0001 1.0001 0 0 0 19.869141 3 L 15 3 A 1.0001 1.0001 0 1 0 15 5 L 17.585938 5 L 8.2929688 14.292969 A 1.0001 1.0001 0 1 0 9.7070312 15.707031 L 19 6.4140625 L 19 9 A 1.0001 1.0001 0 1 0 21 9 L 21 4.1269531 A 1.0001 1.0001 0 0 0 19.980469 2.9902344 z M 5 3 C 3.9069372 3 3 3.9069372 3 5 L 3 19 C 3 20.093063 3.9069372 21 5 21 L 19 21 C 20.093063 21 21 20.093063 21 19 L 21 13 A 1.0001 1.0001 0 1 0 19 13 L 19 19 L 5 19 L 5 5 L 11 5 A 1.0001 1.0001 0 1 0 11 3 L 5 3 z"/></svg>
+                    </a>
+                </div>
+            </div>
+            </div>
+
         </div>
 
     </section> 
 </body>
 
-    <footer id="footer" class="footer">
-        <div class="footer-content">
+<footer id="footer" class="footer">
+    <div class="footer-content">
+
+        <div class="footer-left">
             <div class="footer-image">
                 <img src="Images/Agir-4x1_Text_white.png" alt="Footer image">
             </div>
+        </div>
 
+        <div class="footer-center">
             <div class="contact-icons">
                 <a href="mailto:ionpaschalidis@gmail.com" class="contact-icon" title="Email" target="_blank">
                     <img src="Icons/email.svg" alt="Email Icon">
@@ -156,5 +182,13 @@
                 </a>
             </div>
         </div>
+
+        <div class="footer-right">
+            <div class="footer-credit">
+                Developed by Ion Paschalidis
+            </div>
+        </div>
+
+    </div>
 </footer>
 </html>
