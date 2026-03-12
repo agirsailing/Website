@@ -387,3 +387,4 @@ document.addEventListener("DOMContentLoaded", () => {
   // Observe all "more-info" elements
   document.querySelectorAll("[id^='more-info-']").forEach(el => observer.observe(el));
 });
+
