@@ -345,12 +345,11 @@ function extraInfo(box) {
   const upPath = "M480-528 296-344l-56-56 240-240 240 240-56 56-184-184Z";
   const downPath = "M480-344 240-584l56-56 184 184 184-184 56 56-240 240Z";
 
-  const isHidden = moreText.style.display === "none";
+  const isHidden = window.getComputedStyle(moreText).display === "none";
 
   moreText.style.display = isHidden ? "inline-block" : "none";
 
   space.style.display = isHidden ? "inline" : "none";
-  moreText.style.display = isHidden ? "inline" : "none";
   icon.setAttribute("d", isHidden ? upPath : downPath);
 }
 

@@ -780,6 +780,9 @@ z-index: 1;
 .carousel__image.contain {
 object-fit: contain;
 }
+.carousel__image.fill {
+object-fit: fill;
+}
 .carousel__image.active {
 opacity: 1;
 z-index: 2;
@@ -1097,7 +1100,6 @@ padding-bottom: 2rem;
 position: relative;
 z-index: 2;
 }
-
 .hero-header {
 height: auto; 
 min-height: auto;
@@ -1110,21 +1112,17 @@ grid-template-columns: 1fr;
 text-align: center;
 gap: 2rem;
 }
-
 .footer-left,
 .footer-center,
 .footer-right {
 justify-self: center;
 }
-
 .contact-icons {
 justify-content: center;
 }
-
 .footer-image img {
 height: 70px;
 }
-
 .footer-credit {
 margin-top: 0.5rem;
 }
