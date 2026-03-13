@@ -785,6 +785,7 @@ opacity: 1;
 perspective: 1000px;
 width: 100%;
 height: 100%;
+transform-style: preserve-3d;
 }
 .flip-card__inner {
 position: relative;
@@ -792,6 +793,7 @@ width: 100%;
 height: 100%;
 transform-style: preserve-3d;
 transition: transform 0.8s ease;
+will-change: transform;
 }
 .flip-card__inner.flipped {
 transform: rotateY(180deg);
@@ -804,6 +806,8 @@ height: 100%;
 backface-visibility: hidden;
 border-radius: 10px;
 overflow: hidden;
+-webkit-backface-visibility: hidden;
+transform: translateZ(0);
 }
 .flip-card__front {
 z-index: 2;
@@ -938,6 +942,7 @@ line-height: 1;
 display: flex;
 flex-direction: column;
 }
+
 /* Navbar */
 .nav {
 background-color: transparent; 
