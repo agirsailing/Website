@@ -381,12 +381,14 @@ direction: ltr;
 .competition__image {
 display: flex;
 justify-content: center;
-align-items: center;
+overflow: hidden;
+border-radius: 10px;
+background-color: var(--container-color);
 }
 .competition__image img {
-max-width: 100%;
+width: 100%;
 height: auto;
-object-fit: scale-down;
+object-fit: cover;
 }
 .competition_section__title{
 margin-top: 10rem;
