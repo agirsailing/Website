@@ -528,7 +528,7 @@ line-height: 1.1;
 
 .team__grid {
 display: grid;
-grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+grid-template-columns: repeat(2, 1fr);  
 gap: 3rem;
 max-width: var(--content-box-width);
 justify-content: center;
@@ -541,7 +541,7 @@ text-align: center;
 
 .team__member img {
 width: auto;
-height: 200px;
+height: 220px;
 object-fit: contain;
 border: 2px solid var(--background-color);
 transition: transform 0.3s ease;
@@ -1085,6 +1085,15 @@ height: 70px;
 .footer-credit {
 margin-top: 0.5rem;
 }
+
+/* Team member */
+.team__member img {
+width: auto;
+height: 140px;
+object-fit: contain;
+border: 2px solid var(--background-color);
+transition: transform 0.3s ease;
+}
 }
 
 /* --- Large (992px+) --- */
@@ -1109,6 +1118,11 @@ max-width: 450px;
 margin-left: auto;
 margin-right: auto;
 }
+
+.team__grid {
+grid-template-columns: repeat(5, 1fr);
+}
+
 }
 
 /* --- Large extended (1000px+) --- */
