@@ -9,7 +9,6 @@ const NAV_LINKS     = Array.from(document.querySelectorAll('.nav__list-link'));
 const ACTIVE_CLASS  = 'active';
 const BREAKPOINT    = 576;
 
-
 /* ======================
    Dark / Light Mode
    ====================== */
@@ -27,11 +26,9 @@ const disableLightMode = () => {
 
 // Apply saved preference on load
 if (localStorage.getItem('lightmode') === 'active') enableLightMode();
-
 themeSwitch.addEventListener('click', () => {
   localStorage.getItem('lightmode') !== 'active' ? enableLightMode() : disableLightMode();
 });
-
 
 /* ======================
    Navbar — Hamburger
@@ -56,7 +53,6 @@ NAV_LINKS.forEach(link => {
   });
 });
 
-
 /* ======================
    Navbar — Hero Padding
    Compensates for fixed navbar height
@@ -73,7 +69,6 @@ window.addEventListener('resize', () => {
   syncHeroPadding();
   if (window.innerWidth >= BREAKPOINT) resetMobileNav();
 });
-
 
 /* ======================
    Scroll-spy
@@ -107,13 +102,13 @@ const updateActiveByPath = () => {
   const locHash = window.location.hash;
   const locPath = normalizePath(window.location.pathname);
 
-  // 1. Match by hash (e.g. #aboutMe)
+  // 1. Match by hash
   if (locHash) {
     const match = NAV_LINKS.find(l => resolveLinkUrl(l)?.hash === locHash);
     if (match) { setActive(match); return; }
   }
 
-  // 2. Match by pathname (e.g. competition.html)
+  // 2. Match by pathname
   const match = NAV_LINKS.find(l => {
     const u = resolveLinkUrl(l);
     return u && normalizePath(u.pathname) === locPath && !u.hash;
@@ -176,7 +171,6 @@ document.addEventListener('DOMContentLoaded', () => {
   updateActiveOnScroll();
 });
 
-
 /* ======================
    Carousel
    ====================== */
@@ -194,7 +188,6 @@ document.querySelectorAll('.carousel').forEach(carousel => {
   nextBtn?.addEventListener('click', () => show((index + 1) % images.length));
   prevBtn?.addEventListener('click', () => show((index - 1 + images.length) % images.length));
 });
-
 
 /* ======================
    Flip Cards
@@ -228,7 +221,6 @@ document.addEventListener('DOMContentLoaded', () => {
     card.addEventListener('mouseenter', () => clearTimeout(autoFlipBack));
   });
 });
-
 
 /* ======================
    Extra Info Toggle
@@ -270,3 +262,32 @@ document.addEventListener('DOMContentLoaded', () => {
 
   document.querySelectorAll("[id^='more-info-']").forEach(el => observer.observe(el));
 });
+
+/* ======================
+   Countdown
+   ====================== */
+var countDownDate = new Date("2026-06-08T21:59:00Z").getTime();
+
+var x = setInterval(function() {
+  var now = new Date().getTime();
+  var distance = countDownDate - now;
+
+  var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+  var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+  var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+  var h = String(hours).padStart(2, '0');
+	var m = String(minutes).padStart(2, '0');
+	var s = String(seconds).padStart(2, '0');
+    
+  document.getElementById("countdown_days").innerHTML = days + "d ";
+  document.getElementById("countdown_hours").innerHTML = h + "h ";
+  document.getElementById("countdown_minutes").innerHTML = m + "m ";
+  document.getElementById("countdown_seconds").innerHTML = s + "s ";
+
+  if (distance < 0) {
+    clearInterval(x);
+    document.getElementById("countdown").innerHTML = "EXPIRED";
+  }
+}, 1000);

@@ -32,7 +32,6 @@ blockquote:before, blockquote:after,
 q:before, q:after { content: ''; content: none; }
 table { border-collapse: collapse; border-spacing: 0; }
 
-
 /* ==================
     Variables
 ================== */
@@ -103,7 +102,6 @@ line-height: 1.1;
 margin-bottom: 2rem;
 color: var(--text-color-title);
 }
-
 
 /* ==================
     Dark/Light Mode
@@ -243,7 +241,6 @@ transform: translate(-50%, -50%);
 .nav__hamburger-center { top: 50%; }
 .nav__hamburger-bottom { top: 75%; }
 
-
 /* ==================
     Hero Header
 ================== */
@@ -309,7 +306,6 @@ fill: var(--text-color-title);
 transition: fill 0.3s ease;
 }
 
-
 /* ==================
     About
 ================== */
@@ -335,6 +331,44 @@ line-height: 1.6;
 text-align: justify;
 }
 
+/* ==================
+    Countdown
+================== */
+.countdown__container {
+display: flex;
+flex-direction: column;
+align-items: center;
+padding: 6rem;
+text-align: center;
+margin-top: 5rem;
+margin-bottom: 20rem;
+background-image: url('Images/lake_garda.jpg');
+background-size: cover;      
+background-position: center;
+background-attachment: fixed;
+}
+
+@supports (-webkit-touch-callout: none) {
+/* Safari only */
+.countdown__container {
+background-attachment: scroll;
+}
+}
+
+.countdown__label {
+font-size: 4rem;
+font-weight: 800;
+color: var(--background-color);
+margin-bottom: 2rem;
+}
+
+.countdown__display {
+font-size: 6rem;
+font-weight: 800;
+color: var(--background-color);
+display: flex;
+gap: 6rem;
+}
 
 /* ==================
     The Competition
@@ -398,7 +432,6 @@ text-align: center;
 line-height: 1.1;
 color: var(--text-color-title);
 }
-
 
 /* ==================
     Timeline
@@ -489,7 +522,6 @@ color: var(--text-color);
 display: none;
 }
 
-
 /* ==================
     Team Section
 ================== */
@@ -571,7 +603,6 @@ margin-top: 0.2rem;
 font-style: italic;
 }
 
-
 /* ==================
     More Information
 ================== */
@@ -605,7 +636,6 @@ fill: var(--text-color);
 display: none;
 text-align: justify;
 }
-
 
 /* ==================
     News/Cards
@@ -728,7 +758,6 @@ border-radius: 10px;
 display: block;
 }
 
-
 /* ==================
     Carousel
 ================== */
@@ -750,7 +779,7 @@ transition: opacity 0.5s ease;
 z-index: 1;
 }
 
-.carousel__image.contain { object-fit: contain; }
+.carousel__image.contain { object-fit: contain; background-color: black;}
 .carousel__image.fill    { object-fit: fill; }
 
 .carousel__image.active {
@@ -782,7 +811,6 @@ justify-content: center;
 .news__item:hover .carousel__btn {
 opacity: 1;
 }
-
 
 /* ==================
     Flip Card
@@ -858,7 +886,6 @@ height: 80%;
 transform: scale(1.1);
 }
 
-
 /* ==================
     Footer
 ================== */
@@ -927,11 +954,9 @@ font-size: 1.2rem;
 margin-top: 10px;
 }
 
-
 /* ==================
     Screen sizes
 ================== */
-
 /* --- Small / tablet (576px+) --- */
 @media only screen and (min-width: 36em) {
 .container {
