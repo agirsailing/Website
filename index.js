@@ -13,7 +13,6 @@ const BREAKPOINT    = 576;
    Dark / Light Mode
    ====================== */
 const themeSwitch = document.getElementById('theme-switch');
-
 const enableLightMode = () => {
   document.body.classList.add('lightmode');
   localStorage.setItem('lightmode', 'active');
@@ -268,26 +267,99 @@ document.addEventListener('DOMContentLoaded', () => {
    ====================== */
 var countDownDate = new Date("2026-06-08T21:59:00Z").getTime();
 
-var x = setInterval(function() {
-  var now = new Date().getTime();
-  var distance = countDownDate - now;
+// Only run if countdown elements exist on this page
+var countdownDaysEl = document.getElementById("countdown_days");
 
-  var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-  var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-  var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-  var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+if (countdownDaysEl) {
+  var x = setInterval(function() {
+    var now = new Date().getTime();
+    var distance = countDownDate - now;
 
-  var h = String(hours).padStart(2, '0');
-	var m = String(minutes).padStart(2, '0');
-	var s = String(seconds).padStart(2, '0');
-    
-  document.getElementById("countdown_days").innerHTML = days + "d ";
-  document.getElementById("countdown_hours").innerHTML = h + "h ";
-  document.getElementById("countdown_minutes").innerHTML = m + "m ";
-  document.getElementById("countdown_seconds").innerHTML = s + "s ";
+    var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    var seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-  if (distance < 0) {
-    clearInterval(x);
-    document.getElementById("countdown").innerHTML = "EXPIRED";
+    var h = String(hours).padStart(2, '0');
+    var m = String(minutes).padStart(2, '0');
+    var s = String(seconds).padStart(2, '0');
+
+    document.getElementById("countdown_days").innerHTML = days + "d ";
+    document.getElementById("countdown_hours").innerHTML = h + "h ";
+    document.getElementById("countdown_minutes").innerHTML = m + "m ";
+    document.getElementById("countdown_seconds").innerHTML = s + "s ";
+
+    if (distance < 0) {
+      clearInterval(x);
+      var expiredEl = document.getElementById("countdown");  
+      if (expiredEl) expiredEl.innerHTML = "EXPIRED";
+    }
+  }, 1000);
+}
+
+/* ======================
+   Team member presentation
+   ====================== */
+const popup = document.getElementById("memberPresentation");
+const popupImg = document.getElementById('popupImg');
+const popupName = document.getElementById('popupName');
+const popupRole = document.getElementById('popupRole');
+const popupDescription = document.getElementById('popupDescription');
+const popupLink = document.getElementById('popupLink');
+
+const members = Array.from(document.querySelectorAll('.team__member'));
+let currentIndex = 0;
+
+function showMember(index) {
+  const member = members[index];
+  const img = member.querySelector('img');
+  const name = member.querySelector('.member__name');
+  const role = member.querySelector('.member__role');
+  const description = member.querySelector('.member__description');
+  const link = member.querySelector('.member__link');
+
+  popupImg.src = img.src;
+  popupName.textContent = name.textContent;
+  popupRole.textContent = role.textContent;
+  popupDescription.textContent = description ? description.textContent : ''; // if no description, show empty string
+  
+  if (link && link.textContent.trim()) {
+    popupLink.href = link.textContent.trim();
+    popupLink.style.display = 'flex';
+  } else {
+    popupLink.href = '';
+    popupLink.style.display = 'none'; // hide icon if no link
   }
-}, 1000);
+
+  popup.classList.add('show');
+}
+
+document.querySelectorAll('.team__grid').forEach(grid => { 
+  // one listener for whole grid
+  grid.addEventListener('click', (e) => {                     
+    const clickedMember = e.target.closest('.team__member'); // returns the closest element of the DOM tree
+    if (clickedMember) {
+      currentIndex = members.indexOf(clickedMember);
+      showMember(currentIndex);
+    }
+  });
+});
+
+// close on clicking the X or outside the popup
+document.getElementById('popupClose').addEventListener('click', () => {
+  popup.classList.remove('show');
+});
+
+document.addEventListener('keydown', (event) => {
+  if (event.key === 'Escape') { popup.classList.remove('show'); }
+});
+
+document.getElementById('popupPrev').addEventListener('click', () => {
+  currentIndex = (currentIndex - 1 + members.length) % members.length; // % remainder operator - ensures wrap-around without going negative
+  showMember(currentIndex);
+});
+
+document.getElementById('popupNext').addEventListener('click', () => {
+  currentIndex = (currentIndex + 1) % members.length; // % remainder operator - wraps back to 0 after last member
+  showMember(currentIndex);
+});

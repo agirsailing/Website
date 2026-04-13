@@ -298,7 +298,7 @@ width: 100%;
 height: auto;
 object-fit: cover;
 display: block;
-mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
+mask-image: linear-gradient(to bottom, #000000 80%, transparent 100%);
 }
 
 .logo-path {
@@ -340,11 +340,14 @@ flex-direction: column;
 align-items: center;
 padding: 6rem;
 text-align: center;
-margin-top: 5rem;
-margin-bottom: 20rem;
+margin-top: 4rem;
+margin-bottom: 15rem;
 background-image: url('Images/lake_garda.jpg');
 background-size: cover;      
 background-position: center;
+}
+
+.countdown__container.index{
 background-attachment: fixed;
 }
 
@@ -359,15 +362,26 @@ background-attachment: scroll;
 font-size: 4rem;
 font-weight: 800;
 color: var(--background-color);
-margin-bottom: 2rem;
+margin-bottom: 4rem;
+text-transform: uppercase;
+text-shadow:
+1px 1px 1px var(--text-color-title),    /* Bottom-right */
+-1px -1px 1px var(--text-color-title),  /* Top-left */
+1px -1px 1px var(--text-color-title),   /* Top-right */
+-1px 1px 1px var(--text-color-title);   /* Bottom-left */
 }
 
 .countdown__display {
-font-size: 6rem;
+font-size: 4rem;
 font-weight: 800;
 color: var(--background-color);
 display: flex;
 gap: 6rem;
+text-shadow:
+1px 1px 1px var(--text-color-title),    /* Bottom-right */
+-1px -1px 1px var(--text-color-title),  /* Top-left */
+1px -1px 1px var(--text-color-title),   /* Top-right */
+-1px 1px 1px var(--text-color-title);   /* Bottom-left */
 }
 
 /* ==================
@@ -575,12 +589,13 @@ text-align: center;
 width: auto;
 height: 220px;
 object-fit: contain;
-border: 2px solid var(--background-color);
+border: 1px solid var(--text-color-title);
 transition: transform 0.3s ease;
 }
 
 .team__member img:hover {
 transform: scale(1.05);
+cursor: pointer;
 }
 
 .team__member figcaption {
@@ -601,6 +616,119 @@ font-size: 1.4rem;
 color: var(--container-color);
 margin-top: 0.2rem;
 font-style: italic;
+}
+
+.member__description, .member__link {
+display: none;
+}
+
+/* Team member description*/
+.presentation__container {
+display: none;
+position: fixed;
+max-width: 650px;
+width: 100%;
+height: 400px;
+top: 50%;
+left: 50%;
+border-radius: 2rem;
+transform: translate(-50%, -50%);
+background-color: var(--container-color);
+z-index: 999;
+flex-direction: row;
+}
+
+.presentation__container.show {
+display: flex;
+animation: fadeIn 1s;
+}
+
+.popup__img {
+width: auto;
+height: 400px;
+object-fit: fill;
+border-radius: 2rem;
+}
+
+.popup__info{
+flex: 1;
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+}
+
+.popup__name {
+font-size: 2.5rem;
+font-weight: 600;
+color: var(--text-color);
+}
+
+.popup__role {
+font-size: 1.5rem;
+color: var(--text-color);
+margin-top: 0.2rem;
+font-style: italic;
+}
+
+.popup__description {
+font-size: 1.5rem;
+font-weight: 400;
+margin-top: 2rem;
+color: var(--text-color);
+text-align: justify;
+margin-left: 3rem;
+margin-right: 3rem;
+}
+
+.popup__btn {
+position: absolute;
+top: 50%;
+transform: translateY(-50%);
+z-index: 3;
+background: none;
+border: none;
+cursor: pointer;
+border-radius: 50%;
+display: flex;
+align-items: center;
+justify-content: center;
+}
+
+.popup__btn.prev { left: -4rem; }
+.popup__btn.next { right: -4rem; }
+
+.popup__btn svg {
+color: var(--text-color-title);
+}
+
+.popup__close {
+color: var(--text-color-title);
+}
+
+.popup__close {
+position: absolute;
+top: 1.5rem;
+right: 1.5rem;
+background: none;
+border: none;
+cursor: pointer;
+font-size: 2rem;
+font-weight: 400;
+color: var(--text-color);
+}
+
+.popup__link {
+position: absolute;
+bottom: 1rem;
+display: flex;
+justify-content: center;
+align-items: center;
+width: 35px;
+height: 35px;
+border-radius: 50%;
+overflow: hidden;
+text-decoration: none;
 }
 
 /* ==================
@@ -1119,6 +1247,22 @@ object-fit: contain;
 border: 2px solid var(--background-color);
 transition: transform 0.3s ease;
 }
+
+.countdown__container.index{
+background-attachment: scroll;
+}
+
+.countdown__label {
+font-size: 3rem;
+font-weight: 700;
+}
+
+.countdown__display {
+font-size: 3rem;
+font-weight: 700;
+gap: 4rem;
+}
+
 }
 
 /* --- Large (992px+) --- */
