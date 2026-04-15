@@ -471,9 +471,23 @@ function initTeamPopup() {
     showMember(currentIndex);
   });
 
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'ArrowLeft') {
+      currentIndex = (currentIndex - 1 + members.length) % members.length;
+      showMember(currentIndex);
+    }
+  });
+
   popupNext.addEventListener('click', () => {
     currentIndex = (currentIndex + 1) % members.length;
     showMember(currentIndex);
+  });
+
+    document.addEventListener('keydown', (event) => {
+    if (event.key === 'ArrowRight') {
+      currentIndex = (currentIndex + 1) % members.length;
+      showMember(currentIndex);
+    }
   });
 }
 

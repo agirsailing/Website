@@ -50,7 +50,8 @@ scroll-behavior: smooth;
 
 :root {
 --background-color: #00062d;
---container-color: #288278;
+--container-color: #d90166;
+--logo-color: #f6f4f1;
 --text-color: #f6f4f1;
 --text-color-title: #f6f4f1;
 --text-color3: #999999;
@@ -109,6 +110,7 @@ color: var(--text-color-title);
 .lightmode {
 --background-color: #f6f4f1;
 --text-color-title: #00062d;
+--logo-color: #d90166;
 }
 
 #theme-switch {
@@ -130,9 +132,6 @@ z-index: 1000;
 .lightmode #theme-switch svg:first-child { display: none; }
 .lightmode #theme-switch svg:last-child { display: block; }
 
-.header__image .logo {
-content: url("Images/Agir-4x4_white.png");
-}
 
 /* ==================
     Navbar
@@ -302,7 +301,7 @@ mask-image: linear-gradient(to bottom, #000000 80%, transparent 100%);
 }
 
 .logo-path {
-fill: var(--text-color-title);
+fill: var(--logo-color);
 transition: fill 0.3s ease;
 }
 
