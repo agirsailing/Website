@@ -781,7 +781,7 @@ width: 100%;
 .news__item {
 position: relative;
 width: 100%;
-aspect-ratio: 1 / 1;
+aspect-ratio: 1 / 1.2;
 overflow: hidden;
 border-radius: 10px;
 cursor: pointer;
@@ -907,8 +907,9 @@ transition: opacity 0.5s ease;
 z-index: 1;
 }
 
-.carousel__image.contain { object-fit: contain; background-color: black;}
-.carousel__image.fill    { object-fit: fill; }
+.carousel__image.contain { object-fit: contain; background-color: white;}
+.carousel__image.black { background-color: black;}
+.carousel__image.fill { object-fit: fill; }
 
 .carousel__image.active {
 opacity: 1;
