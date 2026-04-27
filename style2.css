@@ -50,7 +50,7 @@ scroll-behavior: smooth;
 
 :root {
 --background-color: #00062d;
---container-color: #d90166;
+--container-color: #1985A1;
 --logo-color: #f6f4f1;
 --text-color: #f6f4f1;
 --text-color-title: #f6f4f1;
@@ -110,7 +110,7 @@ color: var(--text-color-title);
 .lightmode {
 --background-color: #f6f4f1;
 --text-color-title: #00062d;
---logo-color: #d90166;
+--logo-color: #00062d;
 }
 
 #theme-switch {
