@@ -884,6 +884,18 @@ width: 100%;
 height: auto;
 border-radius: 10px;
 display: block;
+}   
+
+.article__image-container figure {
+    margin: 0;
+    text-align: center;
+}
+
+.article__image-container figcaption {
+    margin-top: 0.5rem;
+    font-size: 1.2rem;
+    text-align: center;
+    font-style: italic;
 }
 
 /* ==================
