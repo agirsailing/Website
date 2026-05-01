@@ -495,7 +495,6 @@ function initTeamPopup() {
    App Init
    ====================== */
 document.addEventListener('DOMContentLoaded', async () => {
-  // When you switch to shared header/footer, uncomment this:
   await loadLayout();
 
   initTheme();
@@ -505,4 +504,45 @@ document.addEventListener('DOMContentLoaded', async () => {
   initExtraInfo();
   initCountdown();
   initTeamPopup();
+  initNewsletterWidget();
 });
+
+/* ======================
+   Newsletter Widget
+====================== */
+function initNewsletterWidget() {
+  const toggle = document.getElementById('newsletterToggle');
+  const popup = document.getElementById('newsletterPopup');
+  const close = document.getElementById('newsletterClose');
+  const form = document.getElementById('mc-embedded-subscribe-form');
+  const message = document.getElementById('newsletterMessage');
+
+  if (!toggle || !popup || !close) return;
+
+  toggle.addEventListener('click', () => {
+    popup.classList.toggle('is-open');
+  });
+
+  close.addEventListener('click', () => {
+    popup.classList.remove('is-open');
+  });
+
+  /*
+  form?.addEventListener('submit', () => {
+    if (message) {
+      message.textContent = 'Thank you! Please check your inbox to confirm.';
+    }
+  });*/
+
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape') {
+      popup.classList.remove('is-open');
+    }
+  });
+
+  document.addEventListener('click', (event) => {
+    if (!event.target.closest('.newsletter-widget')) {
+      popup.classList.remove('is-open');
+    }
+  });
+}

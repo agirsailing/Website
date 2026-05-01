@@ -28,4 +28,54 @@
         </div>
 
     </div>
+
+    <!-- Newsletter Floating Widget -->
+<div class="newsletter-widget">
+  <button class="newsletter-toggle" id="newsletterToggle" aria-label="Open newsletter signup">
+    <span class="newsletter-toggle__icon">✉</span>
+    <span>Newsletter</span>
+  </button>
+
+  <div class="newsletter-popup" id="newsletterPopup">
+    <div class="newsletter-popup__header">
+      <strong>Ägir Sailing Team Newsletter</strong>
+      <button class="newsletter-popup__close" id="newsletterClose" aria-label="Close newsletter signup">
+        ×
+      </button>
+    </div>
+
+    <form action="https://agirsailing.us8.list-manage.com/subscribe/post?u=60b82fa6451e309b65abf5672&amp;id=a92d912b55&amp;f_id=00f52ae1f0"
+        method="post"
+        id="mc-embedded-subscribe-form"
+        name="mc-embedded-subscribe-form"
+        target="newsletterFrame"
+        novalidate>
+
+    <label for="mce-EMAIL" class="newsletter-label">Enter your email address :</label>
+
+    <input type="email"
+            name="EMAIL"
+            id="mce-EMAIL"
+            class="newsletter-input"
+            placeholder="your@email.com"
+            required>
+
+    <div style="position: absolute; left: -5000px;" aria-hidden="true">
+        <input type="text"
+            name="b_60b82fa6451e309b65abf5672_a92d912b55"
+            tabindex="-1"
+            value="">
+    </div>
+
+    <button type="submit" class="newsletter-submit">
+        Subsrcibe to our newsletter
+    </button>
+
+    <p class="newsletter-message" id="newsletterMessage"></p>
+    </form>
+
+    <iframe name="newsletterFrame" style="display: none;"></iframe>
+
+  </div>
+</div>
 </footer>
