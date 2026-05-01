@@ -534,6 +534,19 @@ function initNewsletterWidget() {
     }
   });*/
 
+  form?.addEventListener('submit', (event) => {
+    if (!form.checkValidity()) {
+      event.preventDefault();
+      form.reportValidity();
+      return;
+    }
+
+    setTimeout(() => {
+      form.reset();
+      popup.classList.remove('is-open');
+    }, 500);
+  });
+
   document.addEventListener('keydown', (event) => {
     if (event.key === 'Escape') {
       popup.classList.remove('is-open');
