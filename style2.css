@@ -581,6 +581,13 @@ justify-content: center;
 margin: 0 auto;
 }
 
+.board__grid {
+display: flex;
+justify-content: center;
+gap: 3rem;
+flex-wrap: wrap;
+}
+
 .team__member {
 text-align: center;
 }
