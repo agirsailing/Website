@@ -349,7 +349,7 @@ function initExtraInfo() {
    Countdown
    ====================== */
 function initCountdown() {
-  const countDownDate = new Date('2026-06-08T21:59:00Z').getTime();
+  const countDownDate = new Date('2026-06-07T21:59:00Z').getTime();
   const countdownDaysEl = document.getElementById('countdown_days');
 
   if (!countdownDaysEl) return;
