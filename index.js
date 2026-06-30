@@ -378,10 +378,12 @@ function initCountdown() {
     if (secondsEl) secondsEl.innerHTML = `${s}s `;
 
     if (distance < 0) {
-      clearInterval(intervalId);
-      const expiredEl = document.getElementById('countdown');
-      if (expiredEl) expiredEl.innerHTML = 'EXPIRED';
-    }
+    clearInterval(intervalId);
+    const labelEl = document.querySelector('.countdown__label');
+    const displayEl = document.querySelector('.countdown__display');
+    if (labelEl) labelEl.textContent = "See you in next year's edition !";
+    if (displayEl) {displayEl.innerHTML = ''; } // hide numbers
+  }
   }, 1000);
 }
 
