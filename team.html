@@ -8,311 +8,350 @@
     <title>The Team</title>
     <link rel="icon" href="Images/Agir-4x4.png">
     <link href="https://fonts.googleapis.com/css2?family=Krub:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <style>
 
-    body::before {
-    content: "";
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: url('Images/team.jpg');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    z-index: -1;
-    opacity: 40%;
-    }
-    </style>
+    <!<link rel="stylesheet" href="./style2.css?v=3">
+    <body class="team-page">
+
+      
 </head>
 
 <body>
-    
-     <!-- Hero Header -->
-      <header id="home" class="hero-header">
+    <header id="home" class="hero-header">
         <div id="site-header"></div>
     </header>
 
-    <!-- Member info popup  -->
+    <!-- Existing member popup; index.js can continue to target these IDs. -->
     <div class="presentation__container" id="memberPresentation">
         <img class="popup__img" id="popupImg" src="" alt="">
         <div class="popup__info">
             <p class="popup__name" id="popupName"></p>
             <p class="popup__role" id="popupRole"></p>
             <p class="popup__description" id="popupDescription"></p>
-            <a href="" class="popup__link" target="_blank" id="popupLink">
-                <svg xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 24 24" width="24px" height="24px"><path d="M 19.980469 2.9902344 A 1.0001 1.0001 0 0 0 19.869141 3 L 15 3 A 1.0001 1.0001 0 1 0 15 5 L 17.585938 5 L 8.2929688 14.292969 A 1.0001 1.0001 0 1 0 9.7070312 15.707031 L 19 6.4140625 L 19 9 A 1.0001 1.0001 0 1 0 21 9 L 21 4.1269531 A 1.0001 1.0001 0 0 0 19.980469 2.9902344 z M 5 3 C 3.9069372 3 3 3.9069372 3 5 L 3 19 C 3 20.093063 3.9069372 21 5 21 L 19 21 C 20.093063 21 21 20.093063 21 19 L 21 13 A 1.0001 1.0001 0 1 0 19 13 L 19 19 L 5 19 L 5 5 L 11 5 A 1.0001 1.0001 0 1 0 11 3 L 5 3 z"/></svg>
+            <a href="" class="popup__link" target="_blank" rel="noopener noreferrer" id="popupLink" aria-label="Open member profile">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path d="M19.98 2.99A1 1 0 0 0 19.87 3H15a1 1 0 1 0 0 2h2.59l-9.3 9.29a1 1 0 1 0 1.42 1.42L19 6.41V9a1 1 0 1 0 2 0V4.13a1 1 0 0 0-1.02-1.14ZM5 3a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-6a1 1 0 1 0-2 0v6H5V5h6a1 1 0 1 0 0-2H5Z"/></svg>
             </a>
         </div>
-        <button class="popup__btn prev" id="popupPrev">
-            <svg xmlns="http://www.w3.org/2000/svg" height="32px" viewBox="0 -960 960 960" width="32px" fill="currentColor"><path d="M560-240 320-480l240-240 56 56-184 184 184 184-56 56Z"/></svg>
+        <button class="popup__btn prev" id="popupPrev" type="button" aria-label="Previous member">
+            <svg xmlns="http://www.w3.org/2000/svg" height="32" viewBox="0 -960 960 960" width="32" fill="currentColor" aria-hidden="true"><path d="M560-240 320-480l240-240 56 56-184 184 184 184-56 56Z"/></svg>
         </button>
-        <button class="popup__btn next" id="popupNext">
-            <svg xmlns="http://www.w3.org/2000/svg" height="32px" viewBox="0 -960 960 960" width="32px" fill="currentColor"><path d="M504-480 320-664l56-56 240 240-240 240-56-56 184-184Z"/></svg>
+        <button class="popup__btn next" id="popupNext" type="button" aria-label="Next member">
+            <svg xmlns="http://www.w3.org/2000/svg" height="32" viewBox="0 -960 960 960" width="32" fill="currentColor" aria-hidden="true"><path d="M504-480 320-664l56-56 240 240-240 240-56-56 184 184Z"/></svg>
         </button>
-        <button class="popup__close" id="popupClose">✕</button>
-    </div> 
+        <button class="popup__close" id="popupClose" type="button" aria-label="Close member details">&#10005;</button>
+    </div>
 
-    <!-- Team -->
-    <section id="team" class="section container">
-        <h2 class="section__title">Our Team</h2>
+    <main>
+        <section id="team" class="section container">
+            <h1 class="section__title">Our Team</h1>
+            <div class="team-structure" id="teamStructure"></div>
+        </section>
+    </main>
 
-        <div class="team__section_top">
-            <article class="team-box">
-                <h3 class="team-box__title">The Board</h3>
+    <div id="site-footer"></div>
 
-                <div class="board__grid">
-                    <figure class="team__member">
-                        <img src="Images/trombinoscope/9.png" alt="Member pic">
-                        <figcaption>
-                            <span class="member__name">Linnéa Floser</span>
-                            <span class="member__role">Captain</span>
-                            <!--
-                            <span class="member__description">Lorem ipsum dolor sit amet, consectetur  
-                                adipiscing elit. Donec ut velit purus. Sed iaculis sollicitudin risus id 
-                                placerat. Fusce quis nisi vestibulum, commodo justo vitae, consectetur 
-                                arcu. Duis fermentum tellus sit amet vestibulum fringilla. Nunc eu magna 
-                                a ante molestie dictum.</span>
-                            <span class="member__link">https://www.linkedin.com/in/linnea-floser-1659869b/</span>
-                            -->
-                        </figcaption>                    
-                    </figure>
+    <script>
+        /*
+         * One source for names and portraits. A person can be listed in
+         * several subteams without copying.
+         */
+        const MEMBERS = {
+            linnea: {
+                name: "Linnéa Floser",
+                image: "Images/trombinoscope/9.png"
+            },
+            matteo: {
+                name: "Matteo Salerno",
+                image: "Images/trombinoscope/21.jpg"
+            },
+            viktor: {
+                name: "Viktor Eriksson",
+                image: "Images/trombinoscope/8.png"
+            },
+            seb: {
+                name: "Sebastian Bachl",
+                image: "Images/trombinoscope/1.jpg"
+            },
+            linn: {
+                name: "Linn Tjornhom",
+                image: "Images/trombinoscope/25.jpg"
+            },
+            ion: {
+                name: "Ion Paschalidis",
+                image: "Images/trombinoscope/18.jpg"
+            },
+            viggo: {
+                name: "Viggo Andersson",
+                image: "Images/trombinoscope/0.jpg"
+            },
+            charlie: {
+                name: "Charlie Krantz",
+                image: "Images/trombinoscope/13.jpg"
+            },
+            mojahid: {
+                name: "Mojahid Bakhit Ali",
+                image: "Images/trombinoscope/2.jpg"
+            },
+            bharath: {
+                name: "Bharath Sreekumar",
+                image: "Images/trombinoscope/23.jpg"
+            },
+            basir: {
+                name: "Basir Watanmall",
+                image: "Images/trombinoscope/26.png"
+            },
+            louise: {
+                name: "Louise Fritz",
+                image: "Images/trombinoscope/11.jpg"
+            },
+            utkarsh: {
+                name: "Utkarsh Chauhan",
+                image: "Images/trombinoscope/5.png"
+            },
+            alex: {
+                name: "Alexander Holmberg",
+                image: "Images/trombinoscope/12.jpg"
+            },
+            jesper: {
+                name: "Jesper Palmén",
+                image: "Images/trombinoscope/17.png"
+            },
+            chen: {
+                name: "Yang Chen",
+                image: "Images/trombinoscope/6.jpg"
+            },
+            kf: {
+                name: "Karl Fredrik Myhr Liilja",
+                image: "Images/trombinoscope/15.jpg"
+            },
+            giulia: {
+                name: "Giulia Fusco",
+                image: "Images/trombinoscope/28.png"
+            },
+            oskar: {
+                name: "Oskar Robsarve",
+                image: "Images/trombinoscope/20.jpg"
+            },
+            ossian: {
+                name: "Ossian Kruse",
+                image: "Images/trombinoscope/14.png"
+            },
+            oscar: {
+                name: "Oscar Thulstrup Fernsund",
+                image: "Images/trombinoscope/24.jpg"
+            },
+            abhi: { 
+                name: "Abhisyanth Reddy Donthi Reddy", 
+                image: "Images/trombinoscope/Placeholder.png" 
+            },
+            alice: { 
+                name: "Alice Della-Flora",
+                image: "Images/trombinoscope/Placeholder.png" 
+            },
+            amin: { 
+                name: "Amin Rasoolzadeh", 
+                image: "Images/trombinoscope/Placeholder.png" },
+            elsa: { 
+                name: "Elsa Roth", 
+                image: "Images/trombinoscope/Placeholder.png" 
+            }
+        };
 
-                    <figure class="team__member">
-                        <img src="Images/trombinoscope/21.jpg" alt="Member pic">
-                        <figcaption>
-                            <span class="member__name">Matteo Salerno</span>
-                            <span class="member__role">Co-captain</span>
-                        </figcaption>
-                    </figure>
+        // Hierachy 
+        const TEAM_STRUCTURE = [
+            {
+                title: "The Board",
+                leadersLabel: "Leadership",
+                leaders: [
+                    { id: "linnea", role: "Team Captain" },
+                    { id: "matteo", role: "Co-captain" },
+                    { id: "viktor", role: "Communications-Officer" }
+                ],
+                groups: [
+                    {
+                        title: "Board Member",
+                        wide: true,
+                        members: ["linn", "jesper", "ion", "seb"]
+                    }
+                ]
+            },
+            {
+                title: "Structure Team",
+                leadersLabel: "Team Leads",
+                leaders: [
+                    { id: "linn", role: "Team Lead" },
+                    { id: "jesper", role: "Team Lead" }
+                ],
+                groups: [
+                    {
+                        title: "Foil",
+                        lead: "utkarsh",
+                        members: ["ossian", "linn", "basir", "bharath", "chen", "amin", "jesper", "abhi", "mojahid", "matteo", "oscar"]
+                    },
+                    {
+                        title: "Hull",
+                        lead: "charlie",
+                        members: ["viggo", "mojahid", "oskar", "kf", "amin", "alice", "basir", "bharath", "oscar"]
+                    },
+                    {
+                        title: "Control Systems",
+                        lead: "ossian",
+                        members: ["jesper", "charlie", "oskar", "linn", "abhi"]
+                    },
+                    {
+                        title: "Sail & Rig",
+                        lead: "linnea",
+                        members: ["oskar", "alice", "matteo", "seb"]
+                    },
+                    {
+                        title: "Trampoline",
+                        lead: "seb",
+                        members: []
+                    },
+                    {
+                        title: "LCA",
+                        lead: "giulia",
+                        members: []
+                    }
+                ]
+            },
+            {
+                title: "EDR - Electronics, Data & Research",
+                leadersLabel: "Team Lead",
+                leaders: [
+                    { id: "ion", role: "Team Lead" }
+                ],
+                groups: [
+                    {
+                        title: "Electronics",
+                        lead: "ion",
+                        members: ["charlie", "viggo", "jesper", "matteo"]
+                    },
+                    {
+                        title: "TDS - Tools, Data & Stability",
+                        lead: "alice",
+                        members: ["linnea", "kf", "matteo", "ion", "seb"]
+                    },
+                    {
+                        title: "Research",
+                        lead: "seb",
+                        members: ["oskar", "utkarsh", "alex", "matteo", "ion", "linnea", "louise"]
+                    }
+                ]
+            },
+            {
+                title: "Administration",
+                leadersLabel: "Administration Leads",
+                leaders: [
+                    { id: "matteo", role: "Administration Lead" },
+                    { id: "seb", role: "Administration Co-Lead" }
+                ],
+                groups: [
+                    {
+                        title: "Communication",
+                        members: ["viktor", "elsa"]
+                    },
+                    {
+                        title: "Treasury",
+                        lead: "oscar",
+                        members: []
+                    },
+                    {
+                        title: "Sponsors",
+                        lead: "louise",
+                        members: ["matteo", "linnea"]
+                    },
+                    {
+                        title: "Logistics",
+                        lead: "louise",
+                        members: ["matteo", "kf", "viggo", "seb"]
+                    },
+                    {
+                        title: "Website",
+                        wide: true,
+                        members: ["ion", "seb"]
+                    }
+                ]
+            }
+        ];
 
-                    <figure class="team__member">
-                        <img src="Images/trombinoscope/8.png" alt="Member pic">
-                        <figcaption>
-                            <span class="member__name">Viktor Eriksson</span>
-                            <span class="member__role">Communication Officer</span>
-                            <span class="member__role">& Trampoline/Wingbars</span> 
-                        </figcaption>
-                    </figure>
-                </div>
-            </article>
-        </div>
+        function initialsAvatar(name) {
+            const initials = name
+                .trim()
+                .split(/\s+/)
+                .slice(0, 2)
+                .map(part => part[0])
+                .join("")
+                .toUpperCase();
 
-        <div class="team__section_top">
-            <article class="team-box">
-                <h3 class="team-box__title">The team leads</h3>
+            const svg = `
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 320">
+                    <rect width="320" height="320" fill="#153149"/>
+                    <text x="160" y="178" text-anchor="middle"
+                          font-family="Arial, sans-serif" font-size="92"
+                          font-weight="700" fill="#ffffff">${initials}</text>
+                </svg>`;
 
-                <div class="team__grid">
-                    <figure class="team__member">
-                        <img src="Images/trombinoscope/1.jpg" alt="Member pic">
-                        <figcaption>
-                            <span class="member__name">Sebastian Bachl</span>
-                            <span class="member__role">Design & Manufacturing</span>
-                        </figcaption>
-                    </figure>
+            return `data:image/svg+xml;charset=UTF-8,${encodeURIComponent(svg)}`;
+        }
 
-                    <figure class="team__member">
-                        <img src="Images/trombinoscope/25.jpg" alt="Member pic">
-                        <figcaption>
-                            <span class="member__name">Linn Tjornhom</span>
-                            <span class="member__role">Design & Manufacturing</span>
-                        </figcaption>                    
-                    </figure>
+        function memberCard(id, role, isLead = false) {
+            const member = MEMBERS[id];
 
-                    <figure class="team__member">
-                        <img src="Images/trombinoscope/18.jpg" alt="Member pic">
-                        <figcaption>
-                            <span class="member__name">Ion Paschalidis</span>
-                            <span class="member__role">Electronics & Website</span>
-                        </figcaption>                    
-                    </figure>
+            if (!member) {
+                throw new Error(`Unknown team member ID: ${id}`);
+            }
 
-                </div>
-            </article>
-        </div>
+            const image = member.image || initialsAvatar(member.name);
+            const leadClass = isLead ? " team__member--lead" : "";
+            const placeholderClass = member.image ? "" : " member__photo-placeholder";
 
-    <div class="team__section">
-            <article class="team-box">
-                <h3 class="team-box__title">The whole crew</h3>
-                <div class="team__grid">
+            return `
+                <figure class="team__member${leadClass}" data-member-id="${id}">
+                    <img class="${placeholderClass.trim()}" src="${image}" alt="Portrait of ${member.name}">
+                    <figcaption>
+                        <span class="member__name">${member.name}</span>
+                        <span class="member__role">${role}</span>
+                    </figcaption>
+                </figure>`;
+        }
 
-                    <figure class="team__member">
-                        <img src="Images/trombinoscope/0.jpg" alt="Member pic">
-                        <figcaption>
-                            <span class="member__name">Viggo Andersson</span>
-                            <span class="member__role">Hull</span>
-                        </figcaption>
-                    </figure>
+        function renderGroup(group) {
+            const cards = [];
 
-                    <figure class="team__member">
-                        <img src="Images/trombinoscope/13.jpg" alt="Member pic">
-                        <figcaption>
-                            <span class="member__name">Charlie Krantz</span>
-                            <span class="member__role">Hull</span>
-                        </figcaption>                    
-                    </figure>
-                    
-                    <figure class="team__member">
-                        <img src="Images/trombinoscope/2.jpg" alt="Member pic">
-                        <figcaption>
-                            <span class="member__name">Mojahid Bakhit Ali</span>
-                            <span class="member__role">Hull</span>
-                        </figcaption>                    
-                    </figure>
+            if (group.lead) {
+                cards.push(memberCard(group.lead, `${group.title} Lead`, true));
+            }
 
-                    <figure class="team__member">
-                        <img src="Images/trombinoscope/23.jpg" alt="Member pic">
-                        <figcaption>
-                            <span class="member__name">Bharath Sreekumar</span>
-                            <span class="member__role">Hull</span>
-                        </figcaption>                    
-                    </figure>
+            cards.push(...group.members.map(id => memberCard(id, group.title)));
 
-                    <figure class="team__member">
-                        <img src="Images/trombinoscope/26.png" alt="Member pic">
-                        <figcaption>
-                            <span class="member__name">Basir Watanmall</span>
-                            <span class="member__role">Hull</span>
-                        </figcaption>                    
-                    </figure>
+            return `
+                <section class="subteam${group.wide ? " subteam--wide" : ""}">
+                    <h4 class="subteam__title">${group.title}</h4>
+                    <div class="subteam__members">${cards.join("")}</div>
+                </section>`;
+        }
 
-                    <figure class="team__member">
-                        <img src="Images/trombinoscope/19.png" alt="Member pic">
-                        <figcaption>
-                            <span class="member__name">Niall Powers Ozyurt</span>
-                            <span class="member__role">Hull</span>
-                        </figcaption>                    
-                    </figure>
+        function renderDivision(division) {
+            const leaders = division.leaders
+                .map(leader => memberCard(leader.id, leader.role, true))
+                .join("");
 
-                    <figure class="team__member">
-                        <img src="Images/trombinoscope/11.jpg" alt="Member pic">
-                        <figcaption>
-                            <span class="member__name">Louise Fritz</span>
-                            <span class="member__role">Foils</span>
-                        </figcaption>                    
-                    </figure>
+            return `
+                <article class="team-box team-division">
+                    <h2 class="team-box__title">${division.title}</h2>
+                    <div class="team-division__intro">
+                        <p class="team-division__label">${division.leadersLabel}</p>
+                        <div class="team-structure__leaders">${leaders}</div>
+                    </div>
+                    <div class="subteams-grid">
+                        ${division.groups.map(renderGroup).join("")}
+                    </div>
+                </article>`;
+        }
 
-                    <figure class="team__member">
-                        <img src="Images/trombinoscope/3.jpg" alt="Member pic">
-                        <figcaption>
-                            <span class="member__name">Aidan Berard</span>
-                            <span class="member__role">Foils</span>
-                        </figcaption>                    
-                    </figure>
-                    
-                    <figure class="team__member">
-                        <img src="Images/trombinoscope/5.png" alt="Member pic">
-                        <figcaption>
-                            <span class="member__name">Utkarsh Chauhan</span>
-                            <span class="member__role">Foils</span>
-                        </figcaption>                    
-                    </figure>
-                    
-                    <figure class="team__member">
-                        <img src="Images/trombinoscope/12.jpg" alt="Member pic">
-                        <figcaption>
-                            <span class="member__name">Alexander Holmberg</span>
-                            <span class="member__role">Foils</span>
-                        </figcaption>                    
-                    </figure>      
-
-                    <figure class="team__member">
-                        <img src="Images/trombinoscope/17.png" alt="Member pic">
-                        <figcaption>
-                            <span class="member__name">Jesper Palmén</span>
-                            <span class="member__role">Foils</span>
-                        </figcaption>                    
-                    </figure>
-
-                    <figure class="team__member">
-                        <img src="Images/trombinoscope/29.png" alt="Member pic">
-                        <figcaption>
-                            <span class="member__name">Jennifer Rosén</span>
-                            <span class="member__role">Research Foils</span>
-                        </figcaption>                    
-                    </figure>               
-
-                    <figure class="team__member">
-                        <img src="Images/trombinoscope/22.png" alt="Member pic">
-                        <figcaption>
-                            <span class="member__name">Eric Sanner</span>
-                            <span class="member__role">Electronics</span>
-                        </figcaption>
-                    </figure>
-
-                    <figure class="team__member">
-                        <img src="Images/trombinoscope/6.jpg" alt="Member pic">
-                        <figcaption>
-                            <span class="member__name">Yang Chen</span>
-                            <span class="member__role">Electronics</span>
-                        </figcaption>
-                    </figure>
-
-                    <figure class="team__member">
-                        <img src="Images/trombinoscope/15.jpg" alt="Member pic">
-                        <figcaption>
-                            <span class="member__name">Karl Fredrik Myhr Liilja</span>
-                            <span class="member__role">Electronics</span>
-                        </figcaption>                    
-                    </figure>
-
-                    <figure class="team__member">
-                        <img src="Images/trombinoscope/28.png" alt="Member pic">
-                        <figcaption>
-                            <span class="member__name">Giulia Fusco</span>
-                            <span class="member__role">Sustainability</span>
-                        </figcaption>
-                    </figure>   
-                                                            
-                    <figure class="team__member">
-                        <img src="Images/trombinoscope/7.jpg" alt="Member pic">
-                        <figcaption>
-                            <span class="member__name">Abhisyanth Reddy Donthi Reddy</span>
-                            <span class="member__role">Sail</span>
-                        </figcaption>                    
-                    </figure>
-                    
-                    <figure class="team__member">
-                        <img src="Images/trombinoscope/20.jpg" alt="Member pic">
-                        <figcaption>
-                            <span class="member__name">Oskar Robsarve</span>
-                            <span class="member__role">Sail</span>
-                        </figcaption>                    
-                    </figure>
-
-                    <figure class="team__member">
-                        <img src="Images/trombinoscope/14.png" alt="Member pic">
-                        <figcaption>
-                            <span class="member__name">Ossian Kruse</span>
-                            <span class="member__role">Control Systems</span>
-                        </figcaption>                    
-                    </figure>
-                    
-                    <figure class="team__member">
-                        <img src="Images/trombinoscope/27.png" alt="Member pic">
-                        <figcaption>
-                            <span class="member__name">Ted Wänerstrand</span>
-                            <span class="member__role">Trampoline</span>
-                        </figcaption>                    
-                    </figure>                     
-
-                    <figure class="team__member">
-                        <img src="Images/trombinoscope/24.jpg" alt="Member pic">
-                        <figcaption>
-                            <span class="member__name">Oscar Thulstrup Fernsund</span>
-                            <span class="member__role">Quality Assurance</span>
-                        </figcaption>                    
-                    </figure>
-
-            </div>
-            </article>
-        </div>
-
-
-    </section>
-</body>
-    
-<div id="site-footer"></div>
+        document.getElementById("teamStructure").innerHTML = TEAM_STRUCTURE
+            .map(renderDivision)
+            .join("");
+    </script>
 </body>
 </html>
