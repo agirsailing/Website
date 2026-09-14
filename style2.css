@@ -1507,7 +1507,7 @@ margin-top: 0.5rem;
 width: auto;
 height: 140px;
 object-fit: contain;
-border: 2px solid var(--background-color);
+border: 2px solid var(--text-color-title);
 transition: transform 0.3s ease;
 }
 
@@ -1697,16 +1697,16 @@ width: 100%;
 max-width: none;
 margin: 0;
 padding: clamp(1rem, 2vw, 2rem);
-border: 2px solid rgba(255, 255, 255, 0.88);
+border: 2px solid var(--text-color-title);
 border-radius: 24px;
 background: transparent;
 box-shadow: none;
-color: #ffffff;
+color: var(--text-color-title);
 }
 
 .team-division .team-box__title {
 margin: 0 0 1.25rem;
-color: #ffffff;
+color: var(--text-color-title);
 font-family: "Krub", sans-serif;
 font-size: clamp(2.5rem, 4vw, 4rem);
 font-weight: 700;
@@ -1720,7 +1720,7 @@ margin-bottom: 1.5rem;
 
 .team-division__label {
 margin: 0 0 0.75rem;
-color: #ffffff;
+color: var(--text-color-title)  ;
 font-family: "Krub", sans-serif;
 font-size: 1.85rem;
 font-weight: 700;
@@ -1751,7 +1751,7 @@ gap: 1.25rem;
 .subteam {
 min-width: 0;
 padding: 1.25rem;
-border: 1px solid rgba(255, 255, 255, 0.72);
+border: 1px solid var(--text-color-title);
 border-radius: 18px;
 background: transparent;
 }
@@ -1762,7 +1762,7 @@ grid-column: 1 / -1;
 
 .subteam__title {
 margin: 0 0 1rem;
-color: #ffffff;
+color: var(--text-color-title);
 font-family: "Krub", sans-serif;
 font-size: 1.8rem;
 font-weight: 800;
