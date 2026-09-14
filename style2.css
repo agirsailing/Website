@@ -1137,6 +1137,50 @@ transform: scale(1.1);
 }
 
 /* ==================
+   Recruiting Grid
+   ================== */
+
+.recruit__grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+  max-width: var(--content-box-width);
+  width: 100%;
+  margin: 4rem auto 0;
+  font-size: 1.4rem;
+}
+
+.recruit__item {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 2 / 1;
+  overflow: hidden;
+  border-radius: 10px;
+  background-color: var(--container-color);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: 3rem;
+}
+
+.recruit__title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--text-color);
+  line-height: 1.2;
+  margin-bottom: 1rem;
+  text-align: left;
+}
+
+.recruit__msg {
+  font-weight: 400;
+  font-size: 1.4rem;
+  line-height: 1.6;
+  color: var(--text-color);
+  text-align: justify;
+  margin-top: 1rem;
+}
+/* ==================
 Footer
 ================== */
 
@@ -1590,6 +1634,21 @@ font-weight: 700;
 font-size: 3rem;
 font-weight: 700;
 gap: 4rem;
+}
+
+/* Recruiting */
+.recruit__grid {
+  grid-template-columns: 1fr;
+}
+
+.recruit__item {
+  aspect-ratio: auto;
+  min-height: 200px;
+  padding: 2rem;
+}
+
+.recruit__title {
+  font-size: 1.8rem;
 }
 }
 
