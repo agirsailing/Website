@@ -184,7 +184,7 @@
                 ],
                 groups: [
                     {
-                        title: "Foil",
+                        title: "Foils",
                         lead: "utkarsh",
                         members: ["ossian", "linn", "basir", "bharath", "chen", "amin", "jesper", "abhi", "mojahid", "matteo", "oscar"]
                     },
@@ -268,8 +268,8 @@
                     },
                     {
                         title: "Website",
-                        wide: true,
-                        members: ["ion", "seb"]
+                        lead: "ion",
+                        members: ["seb"]
                     }
                 ]
             }
@@ -306,12 +306,16 @@
             const leadClass = isLead ? " team__member--lead" : "";
             const placeholderClass = member.image ? "" : " member__photo-placeholder";
 
+            const roleMarkup = role
+                ? `<span class="member__role">${role}</span>`
+                : "";
+
             return `
                 <figure class="team__member${leadClass}" data-member-id="${id}">
                     <img class="${placeholderClass.trim()}" src="${image}" alt="Portrait of ${member.name}">
                     <figcaption>
                         <span class="member__name">${member.name}</span>
-                        <span class="member__role">${role}</span>
+                        ${roleMarkup}
                     </figcaption>
                 </figure>`;
         }
@@ -320,10 +324,10 @@
             const cards = [];
 
             if (group.lead) {
-                cards.push(memberCard(group.lead, `${group.title} Lead`, true));
+                cards.push(memberCard(group.lead, "Sub-team Lead", true));
             }
 
-            cards.push(...group.members.map(id => memberCard(id, group.title)));
+            cards.push(...group.members.map(id => memberCard(id, "")));
 
             return `
                 <section class="subteam${group.wide ? " subteam--wide" : ""}">
