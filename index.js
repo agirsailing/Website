@@ -388,6 +388,75 @@ function initCountdown() {
 }
 
 /* ======================
+   Reusable Popup Gallery
+   ----------------------
+   Shared by the team-member popup and the open-position popup.
+   `items` is the list of elements the popup can show, `render`
+   fills the popup from one of those elements.
+   ====================== */
+function createPopupGallery({ popup, prevBtn, nextBtn, closeBtn, items, render }) {
+  if (!popup || !items.length || typeof render !== 'function') return null;
+
+  let currentIndex = 0;
+  let lastTrigger = null;
+
+  const isOpen = () => popup.classList.contains('show');
+
+  const show = (index) => {
+    const nextIndex = (index + items.length) % items.length;
+    const item = items[nextIndex];
+    if (!item) return;
+
+    currentIndex = nextIndex;
+    render(item, nextIndex, items.length);
+
+    popup.classList.add('show');
+    popup.setAttribute('aria-hidden', 'false');
+  };
+
+  const hide = () => {
+    if (!isOpen()) return;
+
+    popup.classList.remove('show');
+    popup.setAttribute('aria-hidden', 'true');
+
+    lastTrigger?.focus();
+    lastTrigger = null;
+  };
+
+  const step = (offset) => {
+    if (isOpen()) show(currentIndex + offset);
+  };
+
+  const openAt = (item, trigger = null) => {
+    const index = items.indexOf(item);
+    if (index === -1) return;
+
+    lastTrigger = trigger;
+    show(index);
+  };
+
+  prevBtn?.addEventListener('click', () => step(-1));
+  nextBtn?.addEventListener('click', () => step(1));
+  closeBtn?.addEventListener('click', hide);
+
+  document.addEventListener('keydown', (event) => {
+    if (!isOpen()) return;
+
+    if (event.key === 'Escape') hide();
+    if (event.key === 'ArrowLeft') step(-1);
+    if (event.key === 'ArrowRight') step(1);
+  });
+
+  // Clicking the dimmed backdrop closes the popup.
+  popup.addEventListener('click', (event) => {
+    if (event.target === popup) hide();
+  });
+
+  return { show, hide, step, openAt, isOpen };
+}
+
+/* ======================
    Team Member Presentation
    ====================== */
 function initTeamPopup() {
@@ -402,7 +471,8 @@ function initTeamPopup() {
   const popupNext = document.getElementById('popupNext');
 
   const members = Array.from(document.querySelectorAll('.team__member'));
-  const teamGrids = document.querySelectorAll('.team__grid');
+  // `.team-structure` covers the generated layout on team.html.
+  const teamGrids = document.querySelectorAll('.team__grid, .team-structure');
 
   if (
     !popup ||
@@ -420,12 +490,7 @@ function initTeamPopup() {
     return;
   }
 
-  let currentIndex = 0;
-
-  function showMember(index) {
-    const member = members[index];
-    if (!member) return;
-
+  function showMember(member) {
     const img = member.querySelector('img');
     const name = member.querySelector('.member__name');
     const role = member.querySelector('.member__role');
@@ -445,51 +510,138 @@ function initTeamPopup() {
       popupLink.style.display = 'none';
     }
 
-    popup.classList.add('show');
   }
+
+  const gallery = createPopupGallery({
+    popup,
+    prevBtn: popupPrev,
+    nextBtn: popupNext,
+    closeBtn: popupClose,
+    items: members,
+    render: showMember
+  });
+
+  if (!gallery) return;
 
   teamGrids.forEach((grid) => {
     grid.addEventListener('click', (e) => {
       const clickedMember = e.target.closest('.team__member');
       if (!clickedMember) return;
 
-      currentIndex = members.indexOf(clickedMember);
-      showMember(currentIndex);
+      gallery.openAt(clickedMember);
     });
   });
+}
 
-  popupClose.addEventListener('click', () => {
-    popup.classList.remove('show');
-  });
+/* ======================
+   Open Positions Presentation
+   ====================== */
+function initRecruitPopup() {
+  const popup = document.getElementById('recruitPresentation');
+  const popupTitle = document.getElementById('recruitPopupTitle');
+  const popupSubtitle = document.getElementById('recruitPopupSubtitle');
+  const popupBody = document.getElementById('recruitPopupBody');
+  const popupLink = document.getElementById('recruitPopupLink');
+  const popupCounter = document.getElementById('recruitPopupCounter');
+  const popupClose = document.getElementById('recruitPopupClose');
+  const popupPrev = document.getElementById('recruitPopupPrev');
+  const popupNext = document.getElementById('recruitPopupNext');
 
-  document.addEventListener('keydown', (event) => {
-    if (event.key === 'Escape') {
-      popup.classList.remove('show');
+  const grids = document.querySelectorAll('.recruit__grid');
+  const positions = Array.from(document.querySelectorAll('.recruit__item'));
+
+  if (
+    !popup ||
+    !popupTitle ||
+    !popupSubtitle ||
+    !popupBody ||
+    !popupClose ||
+    !popupPrev ||
+    !popupNext ||
+    !grids.length ||
+    !positions.length
+  ) {
+    return;
+  }
+
+  function showPosition(item, index, total) {
+    const title = item.querySelector('.recruit__title');
+    const subtitle = item.querySelector('.recruit__subtitle');
+    const details = item.querySelector('.recruit__details');
+    const shortMsg = item.querySelector('.recruit__msg');
+    const link = item.querySelector('.recruit__link');
+
+    popupTitle.textContent = title ? title.textContent.trim() : '';
+    popupSubtitle.textContent = subtitle ? subtitle.textContent.trim() : '';
+
+    const clean = (text) => text.replace(/\s+/g, ' ').trim();
+    const fullMsg = shortMsg ? clean(shortMsg.textContent) : '';
+
+    if (details) {
+      popupBody.innerHTML = details.innerHTML;
+
+      // The card clips its text; show the full version at the top of the popup,
+      // unless the same paragraph is already written in the details.
+      const alreadyShown = Array.from(popupBody.querySelectorAll('p'))
+        .some((p) => clean(p.textContent) === fullMsg);
+
+      if (fullMsg && !alreadyShown) {
+        const lead = document.createElement('p');
+        lead.className = 'recruit-popup__lead';
+        lead.textContent = fullMsg;
+
+        const meta = popupBody.querySelector('.recruit__meta');
+        if (meta) meta.after(lead);
+        else popupBody.prepend(lead);
+      }
+    } else {
+      popupBody.textContent = fullMsg;
     }
-  });
 
-  popupPrev.addEventListener('click', () => {
-    currentIndex = (currentIndex - 1 + members.length) % members.length;
-    showMember(currentIndex);
-  });
+    if (popupLink) {
+      const href = link?.getAttribute('href')?.trim();
 
-  document.addEventListener('keydown', (event) => {
-    if (event.key === 'ArrowLeft') {
-      currentIndex = (currentIndex - 1 + members.length) % members.length;
-      showMember(currentIndex);
+      if (href) {
+        popupLink.href = href;
+        popupLink.textContent = link.textContent.trim() || 'Apply for this position';
+        popupLink.style.display = 'inline-flex';
+      } else {
+        popupLink.removeAttribute('href');
+        popupLink.style.display = 'none';
+      }
     }
-  });
 
-  popupNext.addEventListener('click', () => {
-    currentIndex = (currentIndex + 1) % members.length;
-    showMember(currentIndex);
-  });
-
-    document.addEventListener('keydown', (event) => {
-    if (event.key === 'ArrowRight') {
-      currentIndex = (currentIndex + 1) % members.length;
-      showMember(currentIndex);
+    if (popupCounter) {
+      popupCounter.textContent = total > 1 ? `${index + 1} / ${total}` : '';
     }
+
+    // One position only: nothing to scroll through.
+    popupPrev.hidden = total < 2;
+    popupNext.hidden = total < 2;
+
+    popupBody.scrollTop = 0;
+  }
+
+  const gallery = createPopupGallery({
+    popup,
+    prevBtn: popupPrev,
+    nextBtn: popupNext,
+    closeBtn: popupClose,
+    items: positions,
+    render: showPosition
+  });
+
+  if (!gallery) return;
+
+  // One listener per grid, so every section's + buttons open the popup.
+  grids.forEach((grid) => {
+    grid.addEventListener('click', (e) => {
+      const btn = e.target.closest('.recruit__more-btn');
+      if (!btn) return;
+
+      const item = btn.closest('.recruit__item');
+      if (item) gallery.openAt(item, btn);
+    });
   });
 }
 
@@ -506,6 +658,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   initExtraInfo();
   initCountdown();
   initTeamPopup();
+  initRecruitPopup();
   initNewsletterWidget();
 });
 

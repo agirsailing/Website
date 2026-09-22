@@ -1137,48 +1137,312 @@ transform: scale(1.1);
 }
 
 /* ==================
-   Recruiting Grid
-   ================== */
+  Recruiting Grid
+  ================== */
+.recruiting__container {
+display: block;
+max-width: var(--content-box-width);
+margin-left: auto;
+margin-right: auto;
+width: 100%;
+padding-left: 2rem;
+padding-right: 2rem;
+flex: 1;
+}
+
+.recruit__description {
+margin-top: 1.4rem;
+font-weight: 400;
+font-size: 1.8rem;
+position: relative;
+text-align: center;
+line-height: 1.1;
+margin-bottom: 2rem;
+color: var(--text-color-title);
+}
 
 .recruit__grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 2rem;
-  max-width: var(--content-box-width);
-  width: 100%;
-  margin: 4rem auto 0;
-  font-size: 1.4rem;
+display: grid;
+grid-template-columns: repeat(2, 1fr);
+gap: 2rem;
+max-width: var(--content-box-width);
+width: 100%;
+margin: 4rem auto 0;
+font-size: 1.4rem;
 }
 
 .recruit__item {
-  position: relative;
-  width: 100%;
-  aspect-ratio: 2 / 1;
-  overflow: hidden;
-  border-radius: 10px;
-  background-color: var(--container-color);
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  padding: 3rem;
+position: relative;
+width: 100%;
+height: 280px;           
+overflow: hidden;
+border-radius: 10px;
+background-color: var(--container-color);
+display: flex;
+flex-direction: column;
+justify-content: flex-start;
+padding: 3rem;
 }
 
 .recruit__title {
-  font-size: 2rem;
-  font-weight: 700;
-  color: var(--text-color);
-  line-height: 1.2;
-  margin-bottom: 1rem;
-  text-align: left;
+font-size: 2.5rem;
+font-weight: 800;
+color: var(--text-color);
+line-height: 1.2;
+margin-bottom: 0.5rem;
+text-align: left;
+}
+
+.recruit__subtitle {
+font-size: 2rem;
+font-weight: 500;
+color: var(--text-color);
+line-height: 1.2;
+margin-bottom: 0.5rem;
+text-align: left;
 }
 
 .recruit__msg {
-  font-weight: 400;
-  font-size: 1.4rem;
-  line-height: 1.6;
-  color: var(--text-color);
-  text-align: justify;
-  margin-top: 1rem;
+font-weight: 400;
+font-size: 1.4rem;
+line-height: 1.6;
+color: var(--text-color);
+text-align: justify;
+margin-top: 0.5rem;
+display: -webkit-box;
+-webkit-box-orient: vertical;
+-webkit-line-clamp: 3;    /* max lines before "…" */
+line-clamp: 3;
+overflow: hidden;
+}
+
+/* Section headings: credit-bearing / non credit-bearing */
+.recruit__group {
+max-width: var(--content-box-width);
+width: 100%;
+margin: 5rem auto 0;
+}
+
+.recruit__category {
+font-size: 2.6rem;
+font-weight: 700;
+line-height: 1.2;
+color: var(--text-color-title);
+padding-bottom: 0.8rem;
+border-bottom: 2px solid var(--container-color);
+}
+
+.recruit__category-intro {
+margin-top: 1rem;
+font-size: 1.5rem;
+line-height: 1.5;
+color: var(--text-color-title);
+opacity: 0.8;
+}
+
+.recruit__group .recruit__grid {
+margin-top: 2.5rem;
+}
+
+/* Small label at the top of the popup body (Team / role area). */
+.recruit-popup__body .recruit__meta {
+display: inline-block;
+margin-bottom: 1.8rem;
+padding: 0.4rem 1.2rem;
+border-radius: 999px;
+background-color: rgba(255, 255, 255, 0.18);
+font-size: 1.3rem;
+font-weight: 600;
+text-align: left;
+}
+
+/* Long description and apply link are only shown inside the popup. */
+.recruit__details,
+.recruit__link {
+display: none;
+}
+
+.recruit__btn-wrapper {
+margin-top: auto;
+display: flex;
+justify-content: flex-end;
+padding-top: 1rem;
+}
+
+.recruit__more-btn {
+width: 36px;
+height: 36px;
+border: none;
+border-radius: 50%;
+cursor: pointer;
+background-color: var(--text-color);
+color: var(--container-color);
+display: flex;
+align-items: center;
+justify-content: center;
+transition: transform 0.2s ease;
+}
+
+.recruit__more-btn svg {
+width: 22px;
+height: 22px;
+fill: currentColor;
+}
+
+.recruit__more-btn:hover {
+transform: scale(1.12);
+}
+
+.recruit__more-btn:focus-visible {
+outline: 2px solid var(--text-color);
+outline-offset: 3px;
+}
+
+/* ==================
+Position Popup
+================== */
+
+.recruit-popup__overlay {
+display: none;
+position: fixed;
+inset: 0;
+z-index: 999;
+align-items: center;
+justify-content: center;
+padding: 2rem;
+background-color: rgba(0, 6, 45, 0.65);
+}
+
+.recruit-popup__overlay.show {
+display: flex;
+animation: recruitPopupIn 0.3s ease;
+}
+
+.recruit-popup {
+position: relative;
+display: flex;
+flex-direction: column;
+width: 100%;
+max-width: 720px;
+max-height: min(80vh, 640px);
+padding: 4rem 5rem 3rem;
+border-radius: 2rem;
+background-color: var(--container-color);
+color: var(--text-color);
+}
+
+@keyframes recruitPopupIn {
+from {
+opacity: 0;
+}
+
+to {
+opacity: 1;
+}
+}
+
+.recruit-popup__info {
+display: flex;
+flex-direction: column;
+min-height: 0;
+}
+
+.recruit-popup__title {
+font-size: 2.5rem;
+font-weight: 700;
+line-height: 1.2;
+text-align: center;
+color: var(--text-color);
+}
+
+.recruit-popup__subtitle {
+font-size: 1.6rem;
+font-style: italic;
+margin-top: 0.4rem;
+text-align: center;
+color: var(--text-color);
+}
+
+.recruit-popup__body {
+margin-top: 2rem;
+overflow-y: auto;
+padding-right: 0.5rem;
+font-size: 1.5rem;
+font-weight: 400;
+line-height: 1.6;
+text-align: left;
+color: var(--text-color);
+}
+
+.recruit-popup__body p {
+margin-bottom: 1.5rem;
+text-align: justify;
+}
+
+.recruit-popup__body h4 {
+font-size: 1.7rem;
+font-weight: 700;
+margin-bottom: 0.6rem;
+}
+
+.recruit-popup__body ul {
+list-style: disc;
+padding-left: 2rem;
+margin-bottom: 1.5rem;
+}
+
+.recruit-popup__body li {
+margin-bottom: 0.4rem;
+}
+
+.recruit-popup__body > *:last-child {
+margin-bottom: 0;
+}
+
+.recruit-popup__link {
+align-self: center;
+margin-top: 2rem;
+display: inline-flex;
+align-items: center;
+justify-content: center;
+padding: 1rem 2.4rem;
+border-radius: 999px;
+background-color: var(--text-color);
+color: var(--container-color);
+font-size: 1.5rem;
+font-weight: 700;
+text-decoration: none;
+transition: transform 0.2s ease;
+}
+
+.recruit-popup__link:hover {
+transform: scale(1.05);
+}
+
+.recruit-popup__counter {
+margin-top: 1.2rem;
+text-align: center;
+font-size: 1.3rem;
+color: var(--text-color);
+opacity: 0.8;
+}
+
+/* Arrows sit inside this popup, unlike the member one. */
+.recruit-popup .popup__btn.prev {
+left: 1rem;
+}
+
+.recruit-popup .popup__btn.next {
+right: 1rem;
+}
+
+.recruit-popup .popup__btn svg,
+.recruit-popup .popup__close {
+color: var(--text-color);
+}
+
+.recruit-popup .popup__btn[hidden] {
+display: none;
 }
 /* ==================
 Footer
@@ -1638,17 +1902,58 @@ gap: 4rem;
 
 /* Recruiting */
 .recruit__grid {
-  grid-template-columns: 1fr;
+grid-template-columns: 1fr;
 }
 
 .recruit__item {
-  aspect-ratio: auto;
-  min-height: 200px;
-  padding: 2rem;
+height: 300px;
+padding: 2rem;
 }
 
 .recruit__title {
-  font-size: 1.8rem;
+font-size: 1.8rem;
+}
+
+.recruit__btn-wrapper {
+padding-top: 1rem;
+}
+
+.recruit__group {
+margin-top: 3.5rem;
+}
+
+.recruit__category {
+font-size: 2.1rem;
+}
+
+.recruit-popup__overlay {
+padding: 1.5rem;
+}
+
+.recruit-popup {
+max-height: 82vh;
+padding: 3.5rem 4rem 2.5rem;
+border-radius: 1.5rem;
+}
+
+.recruit-popup .popup__btn.prev {
+left: 0.4rem;
+}
+
+.recruit-popup .popup__btn.next {
+right: 0.4rem;
+}
+
+.recruit-popup__title {
+font-size: 2rem;
+}
+
+.recruit-popup__subtitle {
+font-size: 1.4rem;
+}
+
+.recruit-popup__body {
+font-size: 1.4rem;
 }
 }
 
@@ -1828,15 +2133,15 @@ font-weight: 800;
 }
 
 .subteam__members {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 1rem;
+display: flex;
+flex-wrap: wrap;
+justify-content: center;
+gap: 1rem;
 }
 
 .subteam__members > .team__member {
-  flex: 0 0 calc((100% - 4rem) / 5);
-  max-width: calc((100% - 4rem) / 5);
+flex: 0 0 calc((100% - 4rem) / 5);
+max-width: calc((100% - 4rem) / 5);
 }
 
 .team-division .team__member {
@@ -1907,27 +2212,27 @@ object-fit: cover;
 }
 
 @media only screen and (max-width: 899px) {
-  .subteam__members > .team__member {
-    flex-basis: calc((100% - 3rem) / 4);
-    max-width: calc((100% - 3rem) / 4);
-  }
+.subteam__members > .team__member {
+  flex-basis: calc((100% - 3rem) / 4);
+  max-width: calc((100% - 3rem) / 4);
+}
 
-  .team-structure__leaders > .team__member {
-    flex-basis: calc((100% - 2rem) / 3);
-    max-width: calc((100% - 2rem) / 3);
-  }
+.team-structure__leaders > .team__member {
+  flex-basis: calc((100% - 2rem) / 3);
+  max-width: calc((100% - 2rem) / 3);
+}
 }
 
 /* Phone: two cards per row */
 @media only screen and (max-width: 650px) {
 
 .subteam__members {
-  gap: 0.75rem;
+gap: 0.75rem;
 }
 
 .subteam__members > .team__member {
-  flex-basis: calc((100% - 0.75rem) / 2);
-  max-width: calc((100% - 0.75rem) / 2);
+flex-basis: calc((100% - 0.75rem) / 2);
+max-width: calc((100% - 0.75rem) / 2);
 }
 
 .team-structure__leaders {
